@@ -10,9 +10,10 @@ export class Database {
         this.db.defaultsDeep({
             config: {
                 maxPercent: 300,
+                minPercentReturn: 10,
                 raiseStakePercent: 100,
                 defaultBettingTime: 120,
-                defaultActiveGame: "game1"
+                activeGame: "game1"
             },
             games: ["game1"],
             bets: {
@@ -33,4 +34,7 @@ export class Database {
         return this.db.get(`bets.${game}`).value();
     }
 
+    public games(): any {
+        return this.db.get("games").value();
+    }
 }
